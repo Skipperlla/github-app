@@ -36,6 +36,14 @@ const LatestUpdates = () => {
               {DateFunction(1)}
             </td>
           </tr>
+          <tr>
+            <td>
+              <span uk-icon="icon: check; ratio: 1.5"></span> Fixed the filtering issue on the profile page
+            </td>
+            <td style={{ display: "flex", justifyContent: "flex-end" }}>
+              {DateFunction(1)}
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
