@@ -33,7 +33,7 @@ const UserBody = ({ userRepo }) => {
               {RandomRepo.slice(0, 4)
                 .sort((a, b) => StarsFiltering(a, b))
                 .map((Fork) =>
-                  Fork.stargazers_count ? (
+                  Fork ? (
                     // eslint-disable-next-line react/jsx-no-target-blank
                     <a
                       className="card-link uk-link-reset"
@@ -109,7 +109,7 @@ const UserBody = ({ userRepo }) => {
                 .sort((a, b) => StarsFiltering(a, b))
                 .slice(0, 4)
                 .map((repos) =>
-                  repos.stargazers_count ? (
+                  repos ? (
                     // eslint-disable-next-line react/jsx-no-target-blank
                     <a
                       className="card-link uk-link-reset"
