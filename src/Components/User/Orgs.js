@@ -1,7 +1,6 @@
 const Orgs = ({ userOrgs, userInfo }) => {
   const tf = userOrgs.find((c) => c.login !== typeof String);
   const twBoolean = userInfo.twitter_username !== null;
-
   return (
     <>
       {tf !== undefined || false ? (
@@ -14,7 +13,10 @@ const Orgs = ({ userOrgs, userInfo }) => {
               <hr />
               <div className="uk-flex uk-flex-wrap uk-flex-left">
                 {userOrgs.map((orgs) => (
-                  <div className="uk-card uk-card-default uk-margin-small-left uk-margin-small-right uk-margin-small-bottom uk-card-small">
+                  <div
+                    className="uk-card uk-card-default uk-margin-small-left uk-margin-small-right uk-margin-small-bottom uk-card-small"
+                    key={orgs.id}
+                  >
                     <div className="uk-card-header">
                       <a
                         href={`https://github.com/${orgs.login}`}

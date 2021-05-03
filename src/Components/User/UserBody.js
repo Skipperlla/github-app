@@ -22,7 +22,6 @@ const UserBody = ({ userRepo }) => {
   }
   shuffle(RandomRepo);
   // Used like so
-
   return (
     <div className="uk-card-body">
       <div uk-grid="true" className="uk-grid" >
