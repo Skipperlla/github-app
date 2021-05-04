@@ -4,24 +4,20 @@ import CardBodyPreview from "./CardBodyPreview";
 import CardBodyHeader from "./CardBodyHeader.js";
 import LatestUpdates from "./LatestUpdates.js";
 
-import { QueryClient, QueryClientProvider } from "react-query";
-const queryClient = new QueryClient();
 const Index = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className="uk-container uk-padding">
-        <div className="uk-card uk-card-default">
-          <CardBodyHeader/>
-          <div className="uk-card-body">
-            <div className="uk-grid uk-grid-divider uk-flex" uk-grid="true">
-              <CardBodyForm />
-              <CardBodyPreview />
-              <LatestUpdates />
-            </div>
+    <div className="uk-container uk-padding">
+      <div className="uk-card uk-card-default">
+        <CardBodyHeader />
+        <div className="uk-card-body">
+          <div className="uk-grid uk-grid-divider uk-flex" uk-grid="true">
+            <CardBodyForm />
+            <CardBodyPreview />
+            <LatestUpdates />
           </div>
         </div>
       </div>
-    </QueryClientProvider>
+    </div>
   );
 };
 

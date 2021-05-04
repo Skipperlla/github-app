@@ -38,7 +38,7 @@ const UserHeader = ({ userInfo }) => {
                       <polygon points="3 11 4 11 4 18 7 18 7 12 12 12 12 18 16 18 16 11 17 11 17 19 11 19 11 13 8 13 8 19 3 19"></polygon>
                     </svg>
                   </span>{" "}
-                  Website:
+                  Website:{" "}
                   <a href={blog} className="uk-link-text uk-link-reset">
                     <b>{blog}</b>
                   </a>
@@ -62,7 +62,7 @@ const UserHeader = ({ userInfo }) => {
                       <path d="M 1,4 1,16 19,16 19,4 1,4 Z M 18,15 2,15 2,5 18,5 18,15 Z"></path>
                     </svg>
                   </span>{" "}
-                  Mail:
+                  Mail:{" "}
                   <a className="uk-link-reset" href={`mailto:${email}`}>
                     <b>{email}</b>
                   </a>
@@ -93,7 +93,7 @@ const UserHeader = ({ userInfo }) => {
                       ></circle>
                     </svg>
                   </span>{" "}
-                  Location:<b>{location}</b>
+                  Location:{" "}<b>{location}</b>
                 </li>
               ) : null}
 
@@ -110,7 +110,7 @@ const UserHeader = ({ userInfo }) => {
                       <path d="M4.74,20 L7.73,12 L3,12 L15.43,1 L12.32,9 L17.02,9 L4.74,20 L4.74,20 L4.74,20 Z M9.18,11 L7.1,16.39 L14.47,10 L10.86,10 L12.99,4.67 L5.61,11 L9.18,11 L9.18,11 L9.18,11 Z"></path>
                     </svg>
                   </span>{" "}
-                  Company: <b>{company}</b>
+                  Company:{" "}<b>{company}</b>
                 </li>
               ) : null}
             </ul>
@@ -142,7 +142,7 @@ const UserHeader = ({ userInfo }) => {
                     ></polyline>
                   </svg>
                 </span>{" "}
-                Total Repositories:
+                Total Repositories:{" "}
                 <a
                   href={`https://github.com/${login}?tab=repositories`}
                   className="uk-link-text uk-link-reset"
@@ -183,7 +183,7 @@ const UserHeader = ({ userInfo }) => {
                     ></path>
                   </svg>
                 </span>{" "}
-                Followers:
+                Followers:{" "}
                 <a
                   href={`https://github.com/${login}?tab=followers`}
                   className="uk-link-text uk-link-reset"
@@ -224,7 +224,7 @@ const UserHeader = ({ userInfo }) => {
                     ></path>
                   </svg>
                 </span>{" "}
-                Following:
+                Following:{" "}
                 <a
                   href={`https://github.com/${login}?tab=following`}
                   className="uk-link-text uk-link-reset"

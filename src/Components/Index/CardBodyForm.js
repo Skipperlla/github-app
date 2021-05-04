@@ -1,35 +1,26 @@
-import { useEffect, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
+
 
 const CardBodyForm = () => {
   const refInput = useRef();
-  const refAlert = useRef();
   const history = useHistory();
 
   const [text, setText] = useState();
-  const [isError, setisError] = useState([]);
+
 
   const onChangeInput = (event) => {
     setText(event.target.value);
+
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(async () => {
-    await fetch(`https://api.github.com/users/${text}`)
-      .then((res) => res.json())
-      .then((data) => setisError(data.message));
-  }, [text]);
+ 
 
   const onSubmitChange = (e) => {
     e.preventDefault();
 
-    if (isError !== "Not Found") {
+    if (text) {
       history.push(`/${text}`);
-    } else {
-      refAlert.current.style = "display:block";
-      setTimeout(() => {
-        refAlert.current.style = "display:none";
-      }, 2000);
     }
   };
 
@@ -46,15 +37,6 @@ const CardBodyForm = () => {
           }}
           ref={refInput}
         />
-        <div
-          className="uk-alert-danger"
-          style={{ display: "none" }}
-          ref={refAlert}
-          uk-alert="false"
-        >
-          <p>User Not Found</p>
-        </div>
-
         <button
           className="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom"
           type="submit"

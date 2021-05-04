@@ -2,11 +2,10 @@
 import UserHeader from "./UserHeader";
 import UserBody from "./UserBody";
 import Language from "./Language";
-import { QueryClient, QueryClientProvider } from "react-query";
 import { GetRepos, GetUser, GetOrgs } from "../../utils/utils";
-import { useParams } from "react-router-dom";
+import { useParams,useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
-const queryClient = new QueryClient();
+import fetch from "isomorphic-unfetch"
 
 const User = () => {
   const { Username } = useParams();
@@ -14,16 +13,23 @@ const User = () => {
   const [userInfo, setuserInfo] = useState([]);
   const [userRepo, setuserRepo] = useState([]);
   const [userOrgs, setuserOrgs] = useState([]);
+  const history = useHistory()
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     GetUser(Username, setuserInfo);
     GetRepos(Username, setuserRepo);
     GetOrgs(Username, setuserOrgs);
+    await fetch(`https://api.github.com/users/${Username}`).then(res => res.json()).then(data =>{
+      if(data.message === "Not Found"){
+        alert("Kullanıcı Bulunamadı")
+        history.push('/')
+      }
+    })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Username]);
 
   return (
-    <QueryClientProvider client={queryClient}>
       <div className="uk-container uk-padding">
         <div className="uk-card uk-card-default">
           <UserHeader userInfo={userInfo} />
@@ -35,7 +41,6 @@ const User = () => {
           />
         </div>
       </div>
-    </QueryClientProvider>
   );
 };
 
