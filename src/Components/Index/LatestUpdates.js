@@ -14,6 +14,15 @@ const LatestUpdates = () => {
         <tbody>
           <tr>
             <td>
+              <span uk-icon="icon: check; ratio: 1.5"></span> User Not Found
+              Added fixed
+            </td>
+            <td style={{ display: "flex", justifyContent: "flex-end" }}>
+              {DateFunction(1)}
+            </td>
+          </tr>
+          <tr>
+            <td>
               <span uk-icon="icon: check; ratio: 1.5"></span> Optimized and
               fixed
             </td>

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 const CardBodyForm = () => {
@@ -7,15 +7,23 @@ const CardBodyForm = () => {
   const history = useHistory();
 
   const [text, setText] = useState();
+  const [isError, setisError] = useState([]);
 
   const onChangeInput = (event) => {
     setText(event.target.value);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(async () => {
+    await fetch(`https://api.github.com/users/${text}`)
+      .then((res) => res.json())
+      .then((data) => setisError(data.message));
+  }, [text]);
+
   const onSubmitChange = (e) => {
     e.preventDefault();
 
-    if (text) {
+    if (isError !== "Not Found") {
       history.push(`/${text}`);
     } else {
       refAlert.current.style = "display:block";
@@ -44,7 +52,7 @@ const CardBodyForm = () => {
           ref={refAlert}
           uk-alert="false"
         >
-          <p>Böyle bir kullanıcı yok</p>
+          <p>User Not Found</p>
         </div>
 
         <button
