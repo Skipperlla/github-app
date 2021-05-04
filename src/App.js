@@ -1,29 +1,22 @@
 import { Route, Switch } from "react-router-dom";
 import Index from "./Components/Index/Index";
 import User from "./Components/User/User";
-import React,{ useState,useEffect } from "react";
-import { UserContext } from "./context/UserContext";
+import React, { useEffect } from "react";
 import NotFound from "./NotFound";
-import ReactGa from "react-ga";
-
+import ReactGA from "react-ga";
+ReactGA.initialize("G-C31FT8T36M");
 function App() {
-  useEffect(() =>{
-    ReactGa.initialize('G-C31FT8T36M')
-
+  useEffect(() => {
     //to report page view (sayfa görünümünü bildirmek için)
-    ReactGa.pageview(window.location.pathname + window.location.search)
-  },[])
-  const [userName, setUserName] = useState();
-  
-
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  });
   return (
-    <UserContext.Provider value={{ userName, setUserName }}>
       <Switch>
         <Route path="/" exact component={Index} />
-        <Route path={`/${userName}`} component={User} />
+        <Route path="/:Username" component={User} />
+
         <Route component={NotFound} />
       </Switch>
-    </UserContext.Provider>
   );
 }
 

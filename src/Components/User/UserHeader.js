@@ -12,24 +12,18 @@ const UserHeader = ({ userInfo }) => {
     login,
     public_repos,
   } = userInfo;
-
   return (
     <div className="uk-card-header">
       <div className="uk-child-width-expand@s uk-grid" uk-grid="true">
-        <div className="uk-width-1-6@m uk-first-column" >
-          <img
-            src={avatar_url}
-            alt="profile-img"
-            uk-img="true"
-            className="avatar"
-          />
+        <div className="uk-width-1-6@m uk-first-column">
+          <img src={avatar_url} alt="profile-img" uk-img="true" />
         </div>
         <div className="uk-width-expand@m">
           <h3 className="uk-card-title uk-margin-remove-bottom">{name}</h3>
           <p className="uk-text-muted uk-margin-remove-top">{bio}</p>
           <div>
             <ul className="uk-list">
-              {blog !== null || "" ? (
+              {blog !== "" ? (
                 <li className="uk-align-center uk-margin-remove-bottom">
                   <span uk-icon="home" className="uk-icon">
                     <svg
@@ -122,7 +116,7 @@ const UserHeader = ({ userInfo }) => {
             </ul>
           </div>
         </div>
-        <div className="uk-width-auto@m" >
+        <div className="uk-width-auto@m">
           <ul className="uk-list">
             {public_repos !== 0 ? (
               <li className="uk-align-center uk-margin-remove-bottom">

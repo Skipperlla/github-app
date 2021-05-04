@@ -1,38 +1,41 @@
+import { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useRef, useContext } from "react";
-import { UserContext } from "../../context/UserContext";
 
-const CardBodyForm = ({userInfo}) => {
-  const { userName, setUserName } = useContext(UserContext);
+const CardBodyForm = () => {
   const refInput = useRef();
   const refAlert = useRef();
   const history = useHistory();
 
+  const [text, setText] = useState();
 
   const onChangeInput = (event) => {
-    setUserName(event.target.value);
+    setText(event.target.value);
   };
 
-  const onClickButton = (e) => {
+  const onSubmitChange = (e) => {
     e.preventDefault();
-    // eslint-disable-next-line no-unused-expressions
-    if (userInfo.message !== "Not Found") {
-      history.push(`/${userName}`);
-    }else {
+
+    if (text) {
+      history.push(`/${text}`);
+    } else {
       refAlert.current.style = "display:block";
-      setTimeout(() => (refAlert.current.style = "display:none"), 2000);
+      setTimeout(() => {
+        refAlert.current.style = "display:none";
+      }, 2000);
     }
   };
 
   return (
     <div className="uk-margin uk-width-1-2">
       <h3 className="uk-margin-remove-top">Type Your Github Username</h3>
-      <form >
+      <form>
         <input
           className="uk-input uk-form-width-auto uk-margin-bottom"
           type="text"
           placeholder="Username"
-          onChange={(event) => onChangeInput(event)}
+          onChange={(e) => {
+            onChangeInput(e);
+          }}
           ref={refInput}
         />
         <div
@@ -41,14 +44,15 @@ const CardBodyForm = ({userInfo}) => {
           ref={refAlert}
           uk-alert="false"
         >
-          <p>Please enter a valid Github username</p>
+          <p>Böyle bir kullanıcı yok</p>
         </div>
+
         <button
           className="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom"
           type="submit"
-          onClick={onClickButton}
+          onClick={(e) => onSubmitChange(e)}
         >
-          Gender
+          Generate
         </button>
       </form>
       <div className="uk-margin-top">

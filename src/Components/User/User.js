@@ -1,43 +1,41 @@
+/* eslint-disable no-unused-vars */
 import UserHeader from "./UserHeader";
 import UserBody from "./UserBody";
 import Language from "./Language";
-import { useState, useEffect } from "react";
-import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { GetRepos, GetUser, GetOrgs } from "../../utils/utils";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+const queryClient = new QueryClient();
+
 const User = () => {
-  const { userName } = useContext(UserContext);
+  const { Username } = useParams();
 
-  const [userInfo, setUserInfo] = useState([]);
-  const [userRepo, setUserRepo] = useState([]);
+  const [userInfo, setuserInfo] = useState([]);
+  const [userRepo, setuserRepo] = useState([]);
   const [userOrgs, setuserOrgs] = useState([]);
-  //   eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(async () => {
-    await fetch(`https://api.github.com/users/${userName}`)
-      .then((response) => response.json())
-      .then((data) => setUserInfo(data));
-  }, [userName]);
 
-  
-  //   eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
-    await fetch(`https://api.github.com/users/${userName}/repos`)
-      .then((response) => response.json())
-      .then((data) => setUserRepo(data));
-  }, [userName]);
-    //   eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(async () => {
-      await fetch(`https://api.github.com/users/${userName}/orgs`)
-        .then((response) => response.json())
-        .then((data) => setuserOrgs(data));
-    }, [userName]);
+    GetUser(Username, setuserInfo);
+    GetRepos(Username, setuserRepo);
+    GetOrgs(Username, setuserOrgs);
+  }, [Username]);
+
   return (
-    <div className="uk-container uk-padding">
-    <div className="uk-card uk-card-default">
-      <UserHeader userInfo={userInfo}/>
-      <UserBody userRepo={userRepo}/>
-      <Language userRepo={userRepo} userOrgs={userOrgs} userInfo={userInfo}/>
-    </div>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="uk-container uk-padding">
+        <div className="uk-card uk-card-default">
+          <UserHeader userInfo={userInfo} />
+          <UserBody userRepo={userRepo} />
+          <Language
+            LanguageRepo={userRepo}
+            OrgsRepo={userOrgs}
+            userInfo={userInfo}
+          />
+        </div>
+      </div>
+    </QueryClientProvider>
   );
 };
 
