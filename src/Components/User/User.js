@@ -7,7 +7,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import fetch from "isomorphic-unfetch";
 import ModalPage from "./ModalPage";
-
+import {Link} from "react-router-dom"
 
 const User = () => {
   const { Username } = useParams();
@@ -36,7 +36,9 @@ const User = () => {
 
   return (
     <>
+    
     <div className="uk-container uk-padding">
+    <Link to="/" uk-icon="icon: arrow-left; ratio: 2" className="uk-link-reset"></Link>
       <div className="uk-card uk-card-default">
         <UserHeader userInfo={userInfo}/>
         <UserBody userRepo={userRepo} />

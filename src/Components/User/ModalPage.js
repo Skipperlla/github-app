@@ -53,6 +53,7 @@ const ModalPage = () => {
       <button
         onClick={openModal}
         className="uk-button uk-button-primary uk-position-fixed uk-position-bottom-right uk-margin-bottom uk-margin-right"
+        style={{borderRadius:"6px"}}
       >
         Share
       </button>
@@ -79,6 +80,7 @@ const ModalPage = () => {
           <button
             onClick={download}
             className="uk-button uk-button-primary uk-margin-top"
+            style={{borderRadius:"6px"}}
           >
             Download
           </button>
