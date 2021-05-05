@@ -36,7 +36,6 @@ const Language = ({ LanguageRepo, OrgsRepo, userInfo }) => {
                 ],
               }}
               height={400}
-              width={600}
               options={{
                 maintainAspectRatio: false,
                 scales: {

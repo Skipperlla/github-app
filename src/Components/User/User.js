@@ -4,13 +4,13 @@ import UserBody from "./UserBody";
 import Language from "./Language";
 import { GetRepos, GetUser, GetOrgs } from "../../utils/utils";
 import { useParams, useHistory } from "react-router-dom";
-import { useEffect, useState,useContext } from "react";
+import { useEffect, useState } from "react";
 import fetch from "isomorphic-unfetch";
 import ModalPage from "./ModalPage";
 
+
 const User = () => {
   const { Username } = useParams();
-
 
   const [userInfo, setuserInfo] = useState([]);
   const [userRepo, setuserRepo] = useState([]);
@@ -30,6 +30,7 @@ const User = () => {
           history.push("/");
         }
       });
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Username]);
 
@@ -37,13 +38,14 @@ const User = () => {
     <>
     <div className="uk-container uk-padding">
       <div className="uk-card uk-card-default">
-        <UserHeader userInfo={userInfo} />
+        <UserHeader userInfo={userInfo}/>
         <UserBody userRepo={userRepo} />
         <Language
           LanguageRepo={userRepo}
           OrgsRepo={userOrgs}
           userInfo={userInfo}
         />
+
       </div>
     </div>
     <ModalPage/>

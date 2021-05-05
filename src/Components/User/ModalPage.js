@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Modal from "react-modal";
 import "../../style/Modal.css";
 import { useParams } from "react-router-dom";
@@ -12,7 +12,6 @@ Modal.setAppElement("#root");
 const ModalPage = () => {
   const { Username } = useParams();
   const [modalIsOpen, setIsOpen] = useState(false);
-
   const codeRef = useRef();
   const paramsValue = window.location + window.location.search;
 
@@ -37,7 +36,7 @@ const ModalPage = () => {
   async function download() {
     await axios
       .get(
-        `https://api.apiflash.com/v1/urltoimage?access_key=de1993ddc0b14082afa24d7861fb0266&url=https://github-app-blue.vercel.app/${Username}&full_page=%22true%22&fresh=%22true%22`,
+        `https://api.apiflash.com/v1/urltoimage?access_key=${process.env.REACT_APP_ACCESS_KEY}&url=https://github-app-blue.vercel.app/${Username}&full_page=%22true%22&fresh=%22true%22`,
         {
           responseType: "blob",
         }
@@ -47,7 +46,8 @@ const ModalPage = () => {
       });
   }
 
-  const url = `https://api.apiflash.com/v1/urltoimage?access_key=de1993ddc0b14082afa24d7861fb0266&url=https://github-app-blue.vercel.app/${Username}&full_page=%22true%22&fresh=%22true%22`;
+  const url = `https://api.apiflash.com/v1/urltoimage?access_key=${process.env.REACT_APP_ACCESS_KEY}&url=https://github-app-blue.vercel.app/${Username}&full_page=%22true%22&fresh=%22true%22`;
+
   return (
     <>
       <button

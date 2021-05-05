@@ -1,3 +1,5 @@
+
+
 const UserHeader = ({ userInfo }) => {
   const {
     avatar_url,
@@ -246,7 +248,9 @@ const UserHeader = ({ userInfo }) => {
               </button>
             </li> */}
           </ul>
+          
         </div>
+        
       </div>
     </div>
   );
