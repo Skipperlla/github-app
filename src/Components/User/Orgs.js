@@ -3,7 +3,7 @@ const Orgs = ({ userOrgs, userInfo }) => {
   const twBoolean = userInfo.twitter_username !== null;
   return (
     <div className="uk-width-1-2@s uk-first-column">
-      {tf[0] === true ? (
+      {tf[0] &&
         <div>
           <h3 className="uk-margin-remove-top uk-text-center">Organizations</h3>
           <hr />
@@ -32,7 +32,7 @@ const Orgs = ({ userOrgs, userInfo }) => {
             ))}
           </div>
         </div>
-      ) : null}
+     }
       {twBoolean ? (
         <div>
           <h3 className="uk-margin-remove-top uk-text-center">Twitter</h3>

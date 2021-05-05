@@ -1,29 +1,30 @@
-import {  useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
-
+import LastSearch from "./LastSearch";
+import Cookie from "js-cookie";
 
 const CardBodyForm = () => {
   const refInput = useRef();
   const history = useHistory();
-
+  const arr = [];
   const [text, setText] = useState();
 
-
-  const onChangeInput = (event) => {
-    setText(event.target.value);
-
-  };
-
- 
+  // const onChangeInput = (event) => {
+  //   setText(event.target.value);
+  // };
 
   const onSubmitChange = (e) => {
     e.preventDefault();
-
-    if (text) {
-      history.push(`/${text}`);
-    }
+    setText(refInput.current.value);
+    arr.push(text)
+    localStorage.setItem('Users',JSON.stringify(arr));
+    Cookie.set('Users',arr,{ expires: 7 })
+    
+    console.log(arr);
+    // if (text) {
+    //   history.push(`/${text}`);
+    // }
   };
-
   return (
     <div className="uk-margin uk-width-1-2">
       <h3 className="uk-margin-remove-top">Type Your Github Username</h3>
@@ -32,9 +33,7 @@ const CardBodyForm = () => {
           className="uk-input uk-form-width-auto uk-margin-bottom"
           type="text"
           placeholder="Username"
-          onChange={(e) => {
-            onChangeInput(e);
-          }}
+
           ref={refInput}
         />
         <button
@@ -63,6 +62,7 @@ const CardBodyForm = () => {
           </li>
         </ul>
       </div>
+      <LastSearch />
     </div>
   );
 };

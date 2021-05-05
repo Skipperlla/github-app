@@ -15,7 +15,7 @@ const Language = ({ LanguageRepo, OrgsRepo, userInfo }) => {
   const tf = LanguageRepo.map((c) => c.language !== typeof String);
   return (
     <div uk-grid="true" className="uk-grid">
-      {tf[0] === true ? (
+      {tf[0] &&
         <div className="uk-width-1-2@s uk-first-column">
           <h3 className="uk-margin-remove-top uk-text-center">
             Most Used Languages
@@ -57,7 +57,7 @@ const Language = ({ LanguageRepo, OrgsRepo, userInfo }) => {
             />
           </div>
         </div>
-      ) : null}
+     }
       <Orgs userOrgs={OrgsRepo} userInfo={userInfo} />
     </div>
   );

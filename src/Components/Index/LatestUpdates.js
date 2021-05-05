@@ -1,72 +1,28 @@
 import { DateFunction } from "../../utils/utils";
 
-const LatestUpdates = () => {
+const LatestUpdates = ({ projectCommits }) => {
   return (
     <div className="uk-width-1-1">
       <table className="uk-table uk-table-divider">
         <thead>
           <tr>
             <th style={{ textAlign: "center" }} colSpan="2">
-              Latest Updates
+              Last Commits
             </th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <span uk-icon="icon: check; ratio: 1.5"></span> User Not Found
-              Added and fixed
-            </td>
-            <td style={{ display: "flex", justifyContent: "flex-end" }}>
-              {DateFunction(1)}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span uk-icon="icon: check; ratio: 1.5"></span> Optimized and
-              fixed
-            </td>
-            <td style={{ display: "flex", justifyContent: "flex-end" }}>
-              {DateFunction(1)}
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <span uk-icon="icon: check; ratio: 1.5"></span> Fixed the
-              filtering issue on the profile page
-            </td>
-            <td style={{ display: "flex", justifyContent: "flex-end" }}>
-              {DateFunction(1)}
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <span uk-icon="icon: check; ratio: 1.5"></span> Most used
-              languages,Organizations and Twitter added
-            </td>
-            <td style={{ display: "flex", justifyContent: "flex-end" }}>
-              {DateFunction(1)}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span uk-icon="icon: check; ratio: 1.5"></span> Repository stars
-              filtered from large to small
-            </td>
-            <td style={{ display: "flex", justifyContent: "flex-end" }}>
-              02.05.2021
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span uk-icon="icon: check; ratio: 1.5"></span> Released
-            </td>
-            <td style={{ display: "flex", justifyContent: "flex-end" }}>
-              28.04.2021
-            </td>
-          </tr>
+          {projectCommits.map((commit) => (
+            <tr key={commit.node_id}>
+              <td>
+                <span uk-icon="icon: check; ratio: 1.5"></span>{" "}
+                {commit.commit.message}
+              </td>
+              <td style={{ display: "flex", justifyContent: "flex-end" }}>
+                {DateFunction(commit.commit.committer.date)}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

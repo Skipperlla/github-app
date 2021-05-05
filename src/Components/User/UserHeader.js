@@ -12,6 +12,10 @@ const UserHeader = ({ userInfo }) => {
     login,
     public_repos,
   } = userInfo;
+  const tfFollowing = userInfo.following !== 0
+  const tfFollowers = userInfo.followers !== 0
+  const tfRepos = userInfo.public_repos !== 0
+
   return (
     <div className="uk-card-header">
       <div className="uk-child-width-expand@s uk-grid" uk-grid="true">
@@ -23,7 +27,7 @@ const UserHeader = ({ userInfo }) => {
           <p className="uk-text-muted uk-margin-remove-top">{bio}</p>
           <div>
             <ul className="uk-list">
-              {blog !== "" ? (
+              {blog &&
                 <li className="uk-align-center uk-margin-remove-bottom">
                   <span uk-icon="home" className="uk-icon">
                     <svg
@@ -43,8 +47,8 @@ const UserHeader = ({ userInfo }) => {
                     <b>{blog}</b>
                   </a>
                 </li>
-              ) : null}
-              {email !== null ? (
+               }
+              {email &&
                 <li className="uk-align-center uk-margin-remove-bottom">
                   <span uk-icon="mail" className="uk-icon">
                     <svg
@@ -67,8 +71,8 @@ const UserHeader = ({ userInfo }) => {
                     <b>{email}</b>
                   </a>
                 </li>
-              ) : null}
-              {location !== null ? (
+              }
+              {location &&
                 <li className="uk-align-center uk-margin-remove-bottom">
                   <span uk-icon="location" className="uk-icon">
                     <svg
@@ -95,9 +99,9 @@ const UserHeader = ({ userInfo }) => {
                   </span>{" "}
                   Location:{" "}<b>{location}</b>
                 </li>
-              ) : null}
+              }
 
-              {company !== null ? (
+              {company &&
                 <li className="uk-align-center uk-margin-remove-bottom">
                   <span uk-icon="bolt" className="uk-icon">
                     <svg
@@ -112,13 +116,13 @@ const UserHeader = ({ userInfo }) => {
                   </span>{" "}
                   Company:{" "}<b>{company}</b>
                 </li>
-              ) : null}
+              }
             </ul>
           </div>
         </div>
         <div className="uk-width-auto@m">
           <ul className="uk-list">
-            {public_repos !== 0 ? (
+            {tfRepos &&
               <li className="uk-align-center uk-margin-remove-bottom">
                 <span uk-icon="code" className="uk-icon">
                   <svg
@@ -150,8 +154,8 @@ const UserHeader = ({ userInfo }) => {
                   <b>{public_repos}</b>
                 </a>
               </li>
-            ) : null}
-            {followers !== 0 ? (
+            }
+            {tfFollowers &&
               <li className="uk-align-center uk-margin-remove-bottom">
                 <span uk-icon="users" className="uk-icon">
                   <svg
@@ -191,8 +195,8 @@ const UserHeader = ({ userInfo }) => {
                   <b>{followers}</b>
                 </a>
               </li>
-            ) : null}
-            {following !== 0 ? (
+            }
+            {tfFollowing &&
               <li className="uk-align-center uk-margin-remove-bottom">
                 <span uk-icon="users" className="uk-icon">
                   <svg
@@ -232,7 +236,7 @@ const UserHeader = ({ userInfo }) => {
                   <b>{following}</b>
                 </a>
               </li>
-            ) : null}
+            }
             {/* <li className="uk-align-center uk-margin-remove-bottom">
               <button
                 type="submit"

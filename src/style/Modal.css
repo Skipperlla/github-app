@@ -1,0 +1,78 @@
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  padding: 50px 30px;
+  display: block;
+
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  z-index: 1010;
+  overflow-y: auto;
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+    z-index: 0;
+}
+.ReactModal__Overlay--before-close{
+    opacity: 0;
+}
+
+.ReactModal__Content {
+  padding: 30px 30px !important;
+  position: relative !important;
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 600px;
+  max-width: calc(100% - 0.01px) !important;
+  transition: 0.3s linear;
+  transition-property: opacity, transform;
+  border: none !important;
+  border-radius: 0px !important;
+}
+.bg{
+  background-color:red !important;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    height:0px;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: -100%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }

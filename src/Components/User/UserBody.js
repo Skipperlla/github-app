@@ -2,14 +2,15 @@ import { StarsFiltering, getLangColorsMap } from "../../utils/utils";
 
 const UserBody = ({ userRepo }) => {
   const tf = userRepo.map((c) => c.name !== typeof String);
-
+  
   return (
-    tf[0] === true ?
+    <>
+    {tf[0] === true &&
     <div className="uk-card-body">
       <div uk-grid="true" className="uk-grid">
         <div className="uk-width-expand@m uk-grid-margin uk-first-column">
         
-            <>
+            
               <h3>Most Stars Repository</h3>
               <hr />
               {userRepo
@@ -70,11 +71,12 @@ const UserBody = ({ userRepo }) => {
                     </a>
                   ) : null
                 )}
-            </>
+           
         </div>
       </div>
     </div>
-    :null
+  }
+  </>
   );
 };
 

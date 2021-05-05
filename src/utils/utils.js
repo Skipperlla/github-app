@@ -1,12 +1,10 @@
 import axios from "axios";
+import moment from 'moment';
 
-const DateFunction = () => {
-  var today = new Date();
-  var dd = String(today.getDate()).padStart(2, "0");
-  var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-  var yyyy = today.getFullYear();
-  today = mm + "." + dd + "." + yyyy;
-  return today;
+const DateFunction = (dateFormat) => {
+  var inputDate = dateFormat;
+
+  return moment(inputDate).format('LLL');
 };
 
 const StarsFiltering = (a, b) => {
@@ -101,6 +99,13 @@ const GetUser = async (Username, setState) => {
   }).catch(err => {console.error(err)})
 };
 
+const GetCommits = async (setState) => {
+
+  await axios.get('https://api.github.com/repos/Skipperlla/github-app/commits').then((res) => {
+    setState(res.data);
+  }).catch(err => {console.error(err)})
+};
+
 const RandomRepository = (array) => {
   var currentIndex = array.length,
     temporaryValue,
@@ -130,4 +135,5 @@ export {
   GetOrgs,
   GetUser,
   RandomRepository,
+  GetCommits
 };
