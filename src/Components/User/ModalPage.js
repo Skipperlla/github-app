@@ -46,6 +46,7 @@ const ModalPage = () => {
         fileDownload(res.data, `${Username}.jpg`);
       });
   }
+
   const url = `https://api.apiflash.com/v1/urltoimage?access_key=de1993ddc0b14082afa24d7861fb0266&url=https://github-app-blue.vercel.app/${Username}&full_page=%22true%22&fresh=%22true%22`;
   return (
     <>

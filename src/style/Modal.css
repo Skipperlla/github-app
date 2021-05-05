@@ -14,6 +14,29 @@
   transition: opacity 500ms ease-in-out;
 }
 
+
+@media screen and (max-width: 800px) {
+  .ReactModal__Content {
+    inset: 0 !important;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .ft {
+    font-size: 12px;
+  }
+}
+
+
+
+
+@media screen and (max-width: 1024px) {
+  .ReactModal__Content {
+    inset: 0 !important;
+    width:inherit !important;
+  }
+}
+
 .ReactModal__Overlay--after-open{
     opacity: 1;
     z-index: 0;

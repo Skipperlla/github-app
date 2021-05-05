@@ -3,7 +3,7 @@ import { DateFunction } from "../../utils/utils";
 const LatestUpdates = ({ projectCommits }) => {
   return (
     <div className="uk-width-1-1">
-      <table className="uk-table uk-table-divider">
+      <table className="uk-table uk-table-divider ft">
         <thead>
           <tr>
             <th style={{ textAlign: "center" }} colSpan="2">
