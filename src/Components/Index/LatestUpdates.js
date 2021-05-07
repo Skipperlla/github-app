@@ -1,8 +1,12 @@
 import { DateFunction } from "../../utils/utils";
 
 const LatestUpdates = ({ projectCommits }) => {
+  
   return (
+
     <div className="uk-width-1-1 uk-overflow-auto" style={{height:"25em"}}>
+     
+    {projectCommits.length !== 0 ? 
       <table className="uk-table uk-table-divider ft">
         <thead>
           <tr>
@@ -25,7 +29,11 @@ const LatestUpdates = ({ projectCommits }) => {
           ))}
         </tbody>
       </table>
+        :<span class="uk-margin-small-right" uk-spinner="ratio: 3" style={{position:"relative",top:"10em",left:"30em"}}></span>}
     </div>
+ 
+
+
   );
 };
 
