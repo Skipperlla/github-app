@@ -1,10 +1,10 @@
 import axios from "axios";
-import moment from 'moment';
+import moment from "moment";
 
 const DateFunction = (dateFormat) => {
   var inputDate = dateFormat;
 
-  return moment(inputDate).format('LLL');
+  return moment(inputDate).format("LLL");
 };
 
 const StarsFiltering = (a, b) => {
@@ -75,35 +75,33 @@ const CalculateLang = (Repository) => {
 };
 
 const GetRepos = async (Username, setState) => {
-
   await axios
     .get(`https://api.github.com/users/${Username}/repos`)
     .then((res) => {
       setState(res.data);
-    })
+    });
 };
 
 const GetOrgs = async (Username, setState) => {
-
   await axios
     .get(`https://api.github.com/users/${Username}/orgs`)
     .then((res) => {
       setState(res.data);
-    })
+    });
 };
 
 const GetUser = async (Username, setState) => {
-
   await axios.get(`https://api.github.com/users/${Username}`).then((res) => {
     setState(res.data);
-  }).catch(err => {console.error(err)})
+  });
 };
 
 const GetCommits = async (setState) => {
-
-  await axios.get('https://api.github.com/repos/Skipperlla/github-app/commits').then((res) => {
-    setState(res.data);
-  }).catch(err => {console.error(err)})
+  await axios
+    .get("https://api.github.com/repos/Skipperlla/github-app/commits")
+    .then((res) => {
+      setState(res.data);
+    });
 };
 
 const RandomRepository = (array) => {
@@ -135,5 +133,5 @@ export {
   GetOrgs,
   GetUser,
   RandomRepository,
-  GetCommits
+  GetCommits,
 };

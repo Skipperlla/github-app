@@ -29,7 +29,7 @@ const LatestUpdates = ({ projectCommits }) => {
           ))}
         </tbody>
       </table>
-        :<span class="uk-margin-small-right" uk-spinner="ratio: 3" style={{position:"relative",top:"10em",left:"30em"}}></span>}
+        :<span className="uk-margin-small-right" uk-spinner="ratio: 3" style={{position:"relative",top:"10em",left:"30em"}}></span>}
     </div>
  
 
