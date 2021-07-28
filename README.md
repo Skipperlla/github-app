@@ -33,7 +33,7 @@ npm run test
 
 👤 **Skipperlla**
 
-* Website: https://mukemmelblog.herokuapp.com/
+* Website: https://www.skipperlla.xyz/
 * Twitter: [@Skipperlla](https://twitter.com/Skipperlla)
 * Github: [@Skipperlla](https://github.com/Skipperlla)
 
