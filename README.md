@@ -23,10 +23,10 @@
 npm install
 ```
 
-## Run tests
+## Run build
 
 ```sh
-npm run test
+npm run build
 ```
 
 ## Author
