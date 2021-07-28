@@ -11,7 +11,7 @@
   </a>
 </p>
 
-> Github An application that takes certain parameters of your profile and creates a nice image
+> Github Profilinizin belirli parametrelerini alan ve size Github CV'si oluşturan bir uygulama
 
 ### ✨ [Demo](https://github-app-blue.vercel.app/)
 
